@@ -1,0 +1,21 @@
+{
+  "manifest_version": 3,
+  "name": "Tab Manager",
+  "version": "0.1.0",
+  "description": "Personal tab manager: place new tabs after groups, MRU tab switching, auto-close stale tabs.",
+  "minimum_chrome_version": "121",
+  "permissions": ["tabs", "tabGroups", "alarms", "storage"],
+  "background": {
+    "service_worker": "background.js",
+    "type": "module"
+  },
+  "commands": {
+    "switch-to-previous-tab": {
+      "suggested_key": {
+        "default": "Ctrl+Space",
+        "mac": "MacCtrl+Space"
+      },
+      "description": "Switch to most recently used tab"
+    }
+  }
+}
