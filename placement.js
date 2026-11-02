@@ -8,7 +8,9 @@ async function handleCreated(tab) {
   if (tab.pinned) return;
   if (tab.groupId !== undefined && tab.groupId !== NO_GROUP) return;
 
-  if (tab.openerTabId !== undefined) {
+  const isNewTab = tab.url === 'chrome://newtab/' || tab.pendingUrl === 'chrome://newtab/';
+
+  if (!isNewTab && tab.openerTabId !== undefined) {
     const opener = await safeGetTab(tab.openerTabId);
     if (opener && opener.groupId !== NO_GROUP) {
       try {
